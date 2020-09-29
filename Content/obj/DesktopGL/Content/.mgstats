@@ -1,0 +1,4 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bullet.png","C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bin/DesktopGL/Content/bullet.xnb","TextureProcessor","Texture2DContent",322,16469,0.1199978
+"C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/disk.png","C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bin/DesktopGL/Content/disk.xnb","TextureProcessor","Texture2DContent",4512,1048661,0.0530039
+"C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/unit.png","C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bin/DesktopGL/Content/unit.xnb","TextureProcessor","Texture2DContent",4616,1048661,0.0519534
