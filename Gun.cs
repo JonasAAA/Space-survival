@@ -4,13 +4,16 @@ namespace Game1
 {
     public class Gun
     {
-        private RoundObject parent;
+        private readonly Vector2 relPos, relDir;
+        private MyObject parent;
         private readonly Bullet.Parameters bulletParams;
         private readonly float bulletSpeed, shootPause;
         private float timeSinceLastShot;
 
-        public Gun(Bullet.Parameters bulletParams, float bulletSpeed, float shootPause)
+        public Gun(Vector2 relPos, Vector2 relDir, Bullet.Parameters bulletParams, float bulletSpeed, float shootPause)
         {
+            this.relPos = relPos;
+            this.relDir = relDir;
             parent = null;
             this.bulletParams = bulletParams;
             this.bulletSpeed = bulletSpeed;
@@ -18,7 +21,7 @@ namespace Game1
             timeSinceLastShot = shootPause;
         }
 
-        public void SetParent(RoundObject parent)
+        public void SetParent(MyObject parent)
         {
             this.parent = parent;
         }
@@ -26,15 +29,17 @@ namespace Game1
         public void Update(float elapsed, bool shoot)
         {
             timeSinceLastShot += elapsed;
-            if (shoot && timeSinceLastShot >= shootPause)
-            {
-                Vector2 direction = C.Direction(parent.Rotation),
-                    bulletPosition = parent.Position + (parent.radius + bulletParams.radius * .5f) * direction,
-                    bulletVelocity = parent.Velocity + bulletSpeed * direction;
-                RoundObject.InitValues bulletInitValues = new RoundObject.InitValues(bulletPosition, parent.Rotation, bulletVelocity, parent.RotVel);
-                C.newRoundObjects.Add(new Bullet(bulletParams, bulletInitValues));
-                timeSinceLastShot = 0;
-            }
+            if (!shoot || timeSinceLastShot < shootPause)
+                return;
+
+            Vector2 bulletPos = parent.PosToGlobFrame(relPos),
+                bulletVel = parent.VelToGlobFrame(relDir * bulletSpeed);
+
+            Bullet bullet = new Bullet(bulletParams, bulletPos, bulletVel, angle: parent.Angle, angularVel: parent.AngularVel);
+            // so that it does not collide with the ship which fired it
+            bullet.Update(elapsed * .5f);
+            C.newBullets.Add(bullet);
+            timeSinceLastShot = 0;
         }
     }
 }

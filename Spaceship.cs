@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Game1
 {
@@ -8,12 +8,12 @@ namespace Game1
     {
         protected bool forward, turnLeft, moveLeft, turnRight, moveRight, shoot;
         
-        private readonly float rotInertia, thrustPower, RCSPower;
         private readonly HealthBar healthBar;
         private readonly List<Gun> guns;
+        private readonly List<Engine> engines, RCSThrusters;
 
-        public Spaceship(Parameters parameters, HealthBar healthBar, float thrustPower, float RCSPower, InitValues initValues)
-            : base(parameters, initValues)
+        public Spaceship(float mass, float radius, Vector2 position, Vector2 velocity, float angle, string imageName, Color color, HealthBar healthBar, float thrust, float RCSThrust)
+            : base(mass, radius, position, velocity, angle, angularVel: 0, imageName, color)
         {
             forward = false;
             turnLeft = false;
@@ -21,12 +21,21 @@ namespace Game1
             turnRight = false;
             moveRight = false;
             shoot = false;
-            RotVel = 0;
-            rotInertia = .5f * radius * radius;
-            this.thrustPower = thrustPower;
-            this.RCSPower = RCSPower;
             this.healthBar = healthBar;
             guns = new List<Gun>();
+            engines = new List<Engine>()
+            {
+                new Engine(relPos: new Vector2(0, radius), relDir: new Vector2(0, -1), thrust),
+            };
+            RCSThrusters = new List<Engine>()
+            {
+                new Engine(relPos: new Vector2(0, -radius), relDir: new Vector2(1, 0), RCSThrust),
+                new Engine(relPos: new Vector2(0, -radius), relDir: new Vector2(-1, 0), RCSThrust),
+                new Engine(relPos: new Vector2(0, radius), relDir: new Vector2(-1, 0), RCSThrust),
+                new Engine(relPos: new Vector2(0, radius), relDir: new Vector2(1, 0), RCSThrust),
+            };
+            foreach (Engine engine in engines.Concat(RCSThrusters))
+                engine.SetParent(this);
         }
 
         public void AddGun(Gun gun)
@@ -39,30 +48,20 @@ namespace Game1
         {
             /*
               
-               1><2
+               0><1
                 /\
                /  \
               /    \
-               4><3
+               3><2
             
             */
 
-            bool use1 = turnRight | moveRight,
-                use2 = turnLeft | moveLeft,
-                use3 = turnRight | moveLeft,
-                use4 = turnLeft | moveRight;
-
-            float frontAccel = (Convert.ToInt32(use1) - Convert.ToInt32(use2)) * RCSPower,
-                backAccel = (Convert.ToInt32(use4) - Convert.ToInt32(use3)) * RCSPower;
-
-            Vector2 direction = C.Direction(Rotation),
-                orthDir = new Vector2(-direction.Y, direction.X);
-            
-            Velocity += orthDir * (frontAccel + backAccel) * elapsed;
-            if (forward)
-                Velocity += direction * thrustPower * elapsed;
-
-            RotVel += (frontAccel - backAccel) * radius / rotInertia * elapsed;
+            foreach (Engine engine in engines)
+                engine.Update(on: forward);
+            RCSThrusters[0].Update(on: turnRight | moveRight);
+            RCSThrusters[1].Update(on: turnLeft | moveLeft);
+            RCSThrusters[2].Update(on: turnRight | moveLeft);
+            RCSThrusters[3].Update(on: turnLeft | moveRight);
 
             base.Update(elapsed);
 
@@ -70,19 +69,22 @@ namespace Game1
                 gun.Update(elapsed, shoot);
         }
 
-        public override void Collide(RoundObject other)
+        protected override void Impact(RoundObject other)
         {
-            if (IfIntersects(other))
-                Die();
-            base.Collide(other);
+            Die();
         }
 
-        public void Collide(Bullet other)
+        protected override void Impact(Bullet other)
         {
             healthBar.TakeDamage(other.damage);
             if (!healthBar.IsAlive)
                 Die();
-            base.Collide(other);
+        }
+
+        public override void Draw()
+        {
+            healthBar.Draw(Position);
+            base.Draw();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Game1
 {
@@ -7,8 +8,8 @@ namespace Game1
     {
         private readonly Keys forwardKey, turnLeftKey, moveLeftKey, turnRightKey, moveRightKey, shootKey;
 
-        public Player(Parameters parameters, HealthBar healthBar, float thrustPower, float RCSPower, InitValues initValues, Keys forwardKey, Keys turnLeftKey, Keys moveLeftKey, Keys turnRightKey, Keys moveRightKey, Keys shootKey)
-            : base(parameters, healthBar, thrustPower, RCSPower, initValues)
+        public Player(float mass, float radius, Vector2 position, Vector2 velocity, float angle, string imageName, Color color, HealthBar healthBar, float thrust, float RCSThrust, Keys forwardKey, Keys turnLeftKey, Keys moveLeftKey, Keys turnRightKey, Keys moveRightKey, Keys shootKey)
+            : base(mass, radius, position, velocity, angle, imageName, color, healthBar, thrust, RCSThrust)
         {
             this.forwardKey = forwardKey;
             this.turnLeftKey = turnLeftKey;
@@ -20,13 +21,13 @@ namespace Game1
 
         public override void Update(float elapsed)
         {
-            KeyboardState keyState = Keyboard.GetState();
-            forward = keyState.IsKeyDown(forwardKey);
-            turnLeft = keyState.IsKeyDown(turnLeftKey);
-            moveLeft = keyState.IsKeyDown(moveLeftKey);
-            turnRight = keyState.IsKeyDown(turnRightKey);
-            moveRight = keyState.IsKeyDown(moveRightKey);
-            shoot = keyState.IsKeyDown(shootKey);
+            Func<Keys, bool> IsKeyDown = Keyboard.GetState().IsKeyDown;
+            forward = IsKeyDown(forwardKey);
+            turnLeft = IsKeyDown(turnLeftKey);
+            moveLeft = IsKeyDown(moveLeftKey);
+            turnRight = IsKeyDown(turnRightKey);
+            moveRight = IsKeyDown(moveRightKey);
+            shoot = IsKeyDown(shootKey);
             base.Update(elapsed);
         }
     }

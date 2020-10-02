@@ -4,30 +4,34 @@ namespace Game1
 {
     public class Bullet : RoundObject
     {
-        public new class Parameters : RoundObject.Parameters
+        public struct Parameters
         {
+            public string imageName;
+            public float radius, mass;
             public int damage;
+            public Color color;
 
             public Parameters(string imageName, float radius, float mass, int damage, Color color)
-                : base(imageName, radius, mass, color)
             {
+                this.imageName = imageName;
+                this.radius = radius;
+                this.mass = mass;
                 this.damage = damage;
+                this.color = color;
             }
         }
 
         public readonly int damage;
 
-        public Bullet(Parameters parameters, InitValues initValues)
-            : base(parameters, initValues)
+        public Bullet(Parameters parameters, Vector2 position, Vector2 velocity, float angle, float angularVel)
+            : base(parameters.mass, parameters.radius, position, velocity, angle, angularVel, parameters.imageName, parameters.color)
         {
             damage = parameters.damage;
         }
 
-        public override void Collide(RoundObject other)
+        protected override void Impact(RoundObject other)
         {
-            if (IfIntersects(other))
-                Die();
-            base.Collide(other);
+            Die();
         }
     }
 }

@@ -1,4 +1,6 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bullet.png","C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bin/DesktopGL/Content/bullet.xnb","TextureProcessor","Texture2DContent",322,16469,0.1199978
+"C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bullet.png","C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bin/DesktopGL/Content/bullet.xnb","TextureProcessor","Texture2DContent",312,16469,0.1139959
 "C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/disk.png","C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bin/DesktopGL/Content/disk.xnb","TextureProcessor","Texture2DContent",4512,1048661,0.0530039
-"C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/unit.png","C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bin/DesktopGL/Content/unit.xnb","TextureProcessor","Texture2DContent",4616,1048661,0.0519534
+"C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/exhaust.png","C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bin/DesktopGL/Content/exhaust.xnb","TextureProcessor","Texture2DContent",695,131157,0.0159961
+"C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/planet.png","C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bin/DesktopGL/Content/planet.xnb","TextureProcessor","Texture2DContent",15504,4194389,0.3976394
+"C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/unit.png","C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bin/DesktopGL/Content/unit.xnb","TextureProcessor","Texture2DContent",5336,1048661,0.1360359

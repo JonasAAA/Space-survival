@@ -42,3 +42,5 @@ C:\Users\Jonas\Desktop\Space survival\Space-survival\obj\Debug\Game1.csproj.Core
 C:\Users\Jonas\Desktop\Space survival\Space-survival\obj\Debug\Game1.csproj.CopyComplete
 C:\Users\Jonas\Desktop\Space survival\Space-survival\obj\Debug\Game1.exe
 C:\Users\Jonas\Desktop\Space survival\Space-survival\obj\Debug\Game1.pdb
+C:\Users\Jonas\Desktop\Space survival\Space-survival\bin\DesktopGL\AnyCPU\Debug\Content\planet.xnb
+C:\Users\Jonas\Desktop\Space survival\Space-survival\bin\DesktopGL\AnyCPU\Debug\Content\exhaust.xnb

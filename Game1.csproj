@@ -46,8 +46,11 @@
     <Compile Include="C.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="CelestialBody.cs" />
+    <Compile Include="Enemy.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="Gun.cs" />
     <Compile Include="HealthBar.cs" />
+    <Compile Include="MyObject.cs" />
     <Compile Include="PartialRectangle.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Spaceship.cs" />
