@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/planet.png</SourceFile>
-  <SourceTime>2019-12-23T15:31:17.2501973+02:00</SourceTime>
-  <DestFile>C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bin/DesktopGL/Content/planet.xnb</DestFile>
-  <DestTime>2020-09-30T11:13:43.7136114+03:00</DestTime>
+  <SourceFile>C:/Users/Jonas/Desktop/home/Space survival/Space-survival/Content/planet.png</SourceFile>
+  <SourceTime>2019-12-23T13:31:17.2501973+00:00</SourceTime>
+  <DestFile>C:/Users/Jonas/Desktop/home/Space survival/Space-survival/Content/bin/DesktopGL/Content/planet.xnb</DestFile>
+  <DestTime>2020-10-07T20:36:55.9020072+01:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2018-12-08T18:35:54+02:00</ImporterTime>
+  <ImporterTime>2018-12-08T16:35:54+00:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2018-12-08T18:35:54+02:00</ProcessorTime>
+  <ProcessorTime>2018-12-08T16:35:54+00:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

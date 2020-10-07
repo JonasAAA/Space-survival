@@ -34,8 +34,10 @@ namespace Game1
 
             Vector2 bulletPos = parent.PosToGlobFrame(relPos),
                 bulletVel = parent.VelToGlobFrame(relDir * bulletSpeed);
+            float bulletAngle = parent.AngleToGlobalFrame(C.Angle(relDir)),
+                bulletAngularVel = parent.AngVelToGlobalFrame(angularVel: 0);
 
-            Bullet bullet = new Bullet(bulletParams, bulletPos, bulletVel, angle: parent.Angle, angularVel: parent.AngularVel);
+            Bullet bullet = new Bullet(bulletParams, bulletPos, bulletVel, bulletAngle, bulletAngularVel);
             // so that it does not collide with the ship which fired it
             bullet.Update(elapsed * .5f);
             C.newBullets.Add(bullet);

@@ -4,13 +4,15 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/bullet.png</File>
-    <File>C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/disk.png</File>
-    <File>C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/exhaust.png</File>
-    <File>C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/planet.png</File>
-    <File>C:/Users/Jonas/Desktop/Space survival/Space-survival/Content/unit.png</File>
+    <File>C:/Users/Jonas/Desktop/home/Space survival/Space-survival/Content/bullet.png</File>
+    <File>C:/Users/Jonas/Desktop/home/Space survival/Space-survival/Content/disk.png</File>
+    <File>C:/Users/Jonas/Desktop/home/Space survival/Space-survival/Content/exhaust.png</File>
+    <File>C:/Users/Jonas/Desktop/home/Space survival/Space-survival/Content/planet.png</File>
+    <File>C:/Users/Jonas/Desktop/home/Space survival/Space-survival/Content/triangle.png</File>
+    <File>C:/Users/Jonas/Desktop/home/Space survival/Space-survival/Content/unit.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

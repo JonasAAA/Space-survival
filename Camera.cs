@@ -7,16 +7,19 @@ namespace Game1
     {
         private Matrix transform;
         private readonly float scale;
+        private readonly int width, height;
 
-        public Camera()
+        public Camera(int width, int height, float scale)
         {
             transform = Matrix.Identity;
-            scale = 0.5f;
+            this.width = width;
+            this.height = height;
+            this.scale = scale;
         }
 
         public void Update(Vector2 center, float rotation = 0)
         {
-            transform = Matrix.CreateTranslation(-center.X, -center.Y, 0) * Matrix.CreateScale(scale) * Matrix.CreateRotationZ(-rotation) * Matrix.CreateTranslation(C.screenWidth * .5f, C.screenHeight * .5f, 0);
+            transform = Matrix.CreateTranslation(-center.X, -center.Y, 0) * Matrix.CreateScale(scale) * Matrix.CreateRotationZ(-rotation) * Matrix.CreateTranslation(width * .5f, height * .5f, 0);
         }
 
         public void BeginDraw()

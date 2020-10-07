@@ -8,8 +8,8 @@ namespace Game1
     {
         private readonly Keys forwardKey, turnLeftKey, moveLeftKey, turnRightKey, moveRightKey, shootKey;
 
-        public Player(float mass, float radius, Vector2 position, Vector2 velocity, float angle, string imageName, Color color, HealthBar healthBar, float thrust, float RCSThrust, Keys forwardKey, Keys turnLeftKey, Keys moveLeftKey, Keys turnRightKey, Keys moveRightKey, Keys shootKey)
-            : base(mass, radius, position, velocity, angle, imageName, color, healthBar, thrust, RCSThrust)
+        public Player(float mass, Vector2 position, Vector2 velocity, float angle, float maxAngSpeed, HealthBar healthBar, float thrust, float RCSThrust, Image image, Image imageForMinimap, Keys forwardKey, Keys turnLeftKey, Keys moveLeftKey, Keys turnRightKey, Keys moveRightKey, Keys shootKey)
+            : base(mass, position, velocity, angle, maxAngSpeed, healthBar, thrust, RCSThrust, image, imageForMinimap)
         {
             this.forwardKey = forwardKey;
             this.turnLeftKey = turnLeftKey;

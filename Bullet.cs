@@ -6,25 +6,23 @@ namespace Game1
     {
         public struct Parameters
         {
-            public string imageName;
-            public float radius, mass;
+            public float mass;
             public int damage;
-            public Color color;
+            public Image image, imageForMinimap;
 
-            public Parameters(string imageName, float radius, float mass, int damage, Color color)
+            public Parameters(float mass, int damage, Image image, Image imageForMinimap)
             {
-                this.imageName = imageName;
-                this.radius = radius;
                 this.mass = mass;
                 this.damage = damage;
-                this.color = color;
+                this.image = image;
+                this.imageForMinimap = imageForMinimap;
             }
         }
 
         public readonly int damage;
 
         public Bullet(Parameters parameters, Vector2 position, Vector2 velocity, float angle, float angularVel)
-            : base(parameters.mass, parameters.radius, position, velocity, angle, angularVel, parameters.imageName, parameters.color)
+            : base(parameters.mass, position, velocity, angle, angularVel, parameters.image, parameters.imageForMinimap)
         {
             damage = parameters.damage;
         }

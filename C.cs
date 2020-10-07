@@ -1,5 +1,7 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 namespace Game1
@@ -25,5 +27,8 @@ namespace Game1
             C.Content = Content;
             GraphicsDevice = graphicsDevice;
         }
+
+        public static float Angle(Vector2 vector2)
+            => (float)Math.Atan2(vector2.Y, vector2.X) + MathHelper.PiOver2;
     }
 }

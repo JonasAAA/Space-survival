@@ -1,35 +1,38 @@
-﻿using Microsoft.Xna.Framework;
+﻿// get rid of hardcoded constants
+
+using Microsoft.Xna.Framework;
 
 namespace Game1
 {
-    public abstract class RoundObject : MyObject
+    public class RoundObject : MyObject
     {
         public bool IsAlive { get; private set; }
         
         public readonly float radius;
 
-        private readonly RoundImage image;
+        private readonly Image image, imageForMinimap;
 
-        public RoundObject(float mass, float radius, Vector2 position, Vector2 velocity, float angle, float angularVel, string imageName, Color color)
-            : base(mass, angularMass: .5f * mass * radius * radius, position, velocity, angle, angularVel)
+        public RoundObject(float mass, Vector2 position, Vector2 velocity, float angle, float angularVel, Image image, Image imageForMinimap)
+            : base(mass, angularMass: .125f * mass * image.width * image.width, position, velocity, angle, angularVel)
         {
             IsAlive = true;
-            this.radius = radius;
-            image = new RoundImage(imageName, radius, color);
+            radius = image.width * .5f;
+            this.image = image;
+            this.imageForMinimap = imageForMinimap;
         }
 
-        private bool IfIntersects(RoundObject other)
+        public bool Intersects(RoundObject other)
             => this != other && Vector2.Distance(Position, other.Position) < radius + other.radius;
 
         public void Collide(RoundObject other)
         {
-            if (IfIntersects(other))
+            if (Intersects(other))
                 Impact(other);
         }
 
         public virtual void Collide(Bullet other)
         {
-            if (IfIntersects(other))
+            if (Intersects(other))
                 Impact(other);
         }
 
@@ -48,36 +51,13 @@ namespace Game1
         {
             image.Draw(Position, Angle);
         }
+
+        public virtual void MinimapDraw()
+        {
+            imageForMinimap.Draw(Position, Angle);
+        }
+
+        public RoundObject CloneForPred()
+            => new RoundObject(mass, Position, velocity, Angle, angularVel, image, imageForMinimap);
     }
 }
-
-
-//public class Parameters
-//{
-//    public string imageName;
-//    public float radius;
-//    public float mass;
-//    public Color color;
-
-//    public Parameters(string imageName, float radius, float mass, Color color)
-//    {
-//        this.imageName = imageName;
-//        this.radius = radius;
-//        this.mass = mass;
-//        this.color = color;
-//    }
-//}
-
-//public struct InitValues
-//{
-//    public Vector2 position, velocity;
-//    public float rotation, rotVel;
-
-//    public InitValues(Vector2 position, float rotation, Vector2 velocity, float rotVel)
-//    {
-//        this.position = position;
-//        this.rotation = rotation;
-//        this.velocity = velocity;
-//        this.rotVel = rotVel;
-//    }
-//}
